@@ -1,5 +1,5 @@
 /* ===== Media Query for larger screens ===== */
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
 
 * {
     max-width: 1200px;
