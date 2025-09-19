@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles/large.css">
+    <link rel="stylesheet" href="styles/small.css">
+    <script src="scripts/header.js" defer></script>
+</head>
+
+<body>
+    <main>
+        <!-- Header -->
+         <div class="head">
+        <header>
+            <h2>Portfolio</h2>
+            <span></span>
+            <button id="nav-button" class="hamburger" aria-label="navigation"></button>
+        </header>
+
+        <!-- Navigation -->
+        <nav id="nav-bar" class="navigation">
+            <ul>
+                <li ><a href="index.html">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#project">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+</div>
+        <!-- home/ Hero Section -->
+        <section id="home">
+            <div class="hero">
+                <picture>
+                    <source media="(min-width: 400px)" srcset="images/hero_large.jpg">
+                    <source media="(min-width: 300px)" srcset="images/freelancer_headshot.webp">
+                    <img src="images/freelancer_headshot.webp" alt="freelancer headshot"
+                        style="width:100%; height:auto;">
+                </picture>
+
+                <div class="description">
+                    <h2>Developer Name</h2>
+                    <h3>Professional Title</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates magnam nostrum officia
+                        minima,
+                        vitae dolorem. Ipsam aut, velit, quidem inventore nisi vero excepturi unde, ut suscipit saepe
+                        dicta!
+                        Accusantium, pariatur.
+                    </p>
+                    <button>Hire Me</button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- About me -------------------------- -->
+
+        <section id="about" class="about">
+            <h2> John Doe</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit vitae accusantium, ducimus quia autem fuga
+                voluptatibus quam voluptatum suscipit debitis aperiam, repellat quos ratione quod earum quo. Quasi,
+                expedita incidunt.</p>
+
+        </section>
+        <!-- Skills section -------------------------- -->
+
+        <section id="skills" class="skills">
+            <h2>My skills</h2>
+            <div>
+                <h3 class=>HTML</h3>
+                <div class="skill-bar"><span class="html"></span>
+                </div>
+            </div>
+            <div>
+                <h3>CSS</h3>
+                <div class="skill-bar"><span class="css"></span>
+                </div>
+            </div>
+            <div>
+                <h3>GRAPHIC DESIGN</h3>
+                <div class="skill-bar"><span class="design"></span>
+                </div>
+            </div>
+            <div>
+                <h3>JAVASCRIPT</h3>
+                <div class="skill-bar"><span class="javascript"></span>
+                </div>
+            </div>
+            <div>
+                <h3>VIDEO EDITING</h3>
+                <div class="skill-bar"><span class="editing"></span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project section -------------------------- -->
+        <section id="projects" class="projects-card">
+            <h2>Projects</h2>
+            <div class="project">
+                <img src="images/biginner_class.jpg" alt="">
+                <p>Cake Business designer</p>
+                <p>In this project i was able to make a business in Jos, plateau stand out with high quality graphic designs</p>
+            </div>
+            <div class="project">
+                <img src="images/elevate_logo.jpg" alt="">
+                <p>Web developer Intern</p>
+                <p>Here I did a twi weeks internship designing and building website like the elevate homepage and a pretend portfolio</p>
+            </div>
+            <div class="project">
+                <img src="images/byu_folder.jpg" alt="">
+                <p>Softwear Dev student Projects</p>
+                <p>I created some responsive website like rafting wwebsite for a business and chamber website allowing be practice my skills in HTLM, CSS and JavaScript </p>
+            </div>
+        </section>
+
+        <!-- contact section -------------------------- -->
+
+        <section id="contact" class="contact">
+            
+            <div class="info">
+                <h2>Contact Me</h2>
+                <div class="info-card">
+                    <img src="images/facebook_icon.png" alt="">
+                    <p>Official Location</p>
+                    <img src="images/facebook_icon.png" alt="">
+                    <p>09111111110001</p>
+                    <img src="images/facebook_icon.png" alt="">
+                    <p>sample@gmail.com</p>
+                </div>
+            </div>
+            <form action="#">
+                <p>Fill in this form </p>
+                <fieldset>
+                    <legend>Client name</legend>
+                    <div class="form-item">
+                        <label class="name" for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-item">
+                        <label for="email">Email:</label>
+                        <input type="email" id="clientemail" name="clientemail" required>
+
+                    </div>
+                    <label class="message" for="message"> Write your Message:</label>
+                    <textarea name="message" id="message" rows="3" placeholder="what is your request?"></textarea>
+                </fieldset>
+            </form>
+            <button class="submit" type="subnit">Submit request</button>
+        </section>
+
+
+
+
+        <!-- Footer -->
+        <footer>
+            <div class="social">
+                <a href="#"><img src="images/facebook_icon.png" alt="Facebook"></a>
+                <a href="#"><img src="images/facebook_icon.png" alt="Twitter"></a>
+                <a href="#"><img src="images/linkedin_icon.png" alt="LinkedIn"></a>
+            </div>
+            <p>&copy; <span id="currentyear"></span> Professional Name | Professional Location.</p>
+        </footer>
+    </main>
+
+    <!-- Script to auto-update year -->
+    <script>
+        document.getElementById("currentyear").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
