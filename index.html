@@ -12,7 +12,7 @@
 
 <body>
     <main>
-        <!-- Header -->
+        <!-- Header ------------------------------------------------------>
         <div class="head">
             <header>
                 <h2>Portfolio</h2>
@@ -20,7 +20,7 @@
                 <button id="nav-button" class="hamburger" aria-label="navigation"></button>
             </header>
 
-            <!-- Navigation -->
+            <!-- Navigation ---------------------------------------------->
             <nav id="nav-bar" class="navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -31,7 +31,8 @@
                 </ul>
             </nav>
         </div>
-        <!-- home/ Hero Section -->
+
+        <!-- home/ Hero Section ------------------------------------------>
         <section id="home">
             <div class="hero">
                 <picture>
@@ -40,7 +41,6 @@
                     <img src="images/freelancer_headshot.webp" alt="freelancer headshot"
                         style="width:100%; height:auto;">
                 </picture>
-
                 <div class="description">
                     <h2>Garba Joseph Samson</h2>
                     <h3>Designer | Web Developer</h3>
@@ -54,18 +54,15 @@
             </div>
         </section>
 
-
-        <!-- About me -------------------------- -->
-
+        <!-- About me ---------------------------------------------------- -->
         <section id="about" class="about">
             <h2> Garba Joseph Samson</h2>
             <p>I'm agraphic designer with 3+ years experience in inkscape and a softwear development student.
                 skilled in HTML, CSS and JavaScript. I build responsive website and combine creativity with
                 functionality</p>
-
         </section>
-        <!-- Skills section -------------------------- -->
 
+        <!-- Skills section ---------------------------------------------------- -->
         <section id="skills" class="skills">
             <h2>My skills</h2>
             <div>
@@ -95,7 +92,7 @@
             </div>
         </section>
 
-        <!-- Project section -------------------------- -->
+        <!--  Recent Project section ------------------------------------------------>
         <section id="projects" class="projects-card">
             <h2>Recent Projects</h2>
             <div class="project">
@@ -118,10 +115,26 @@
             </div>
         </section>
 
-        <!-- contact section -------------------------- -->
+        <!--  Recent Project section ----------------------------------------------->
+        <section class="field">
+            <h2>Field Of work</h2>
+            <div class="work-fields">
+                <h3>Graphic Designer</h3>
+            </div>
+            <div class="work-fields">
+                <h3>Web Developer</h3>
+            </div>
+            <div class="work-fields">
+                <h3>Business Owner</h3>
+            </div>
+            <div class="work-fields">
+                <h3>Graphic Design</h3>
+            </div>
 
+        </section>
+
+        <!-- contact section ----------------------------------------------------- -->
         <section id="contact" class="contact">
-
             <div class="info">
                 <h2>Contact Me</h2>
                 <div class="info-card">
@@ -153,21 +166,20 @@
             <button class="submit" type="subnit">Submit request</button>
         </section>
 
-
-
-
-        <!-- Footer -->
+        <!-- Footer ----------------------------------------------------------------------->
         <footer>
             <div class="social">
-                <a href="http://facebook.com/garbajs"><img src="images/facebook_icon.png" alt="Garba Js official facebook"></a>
+                <a href="http://facebook.com/garbajs"><img src="images/facebook_icon.png"
+                        alt="Garba Js official facebook"></a>
                 <a href="#"><img src="images/facebook_icon.png" alt="Twitter"></a>
-                <a href="http://linkedin.com/in/garba-js"><img src="images/linkedin_icon.png" alt="Garba Js official LinkedIn"></a>
+                <a href="http://linkedin.com/in/garba-js"><img src="images/linkedin_icon.png"
+                        alt="Garba Js official LinkedIn"></a>
             </div>
             <p>&copy; <span id="currentyear"></span> Garba Joseph Samson | Jos, Nigeria.</p>
         </footer>
     </main>
 
-    <!-- Script to auto-update year -->
+    <!-- Script to auto-update year ------------------------------------------------------>
     <script>
         document.getElementById("currentyear").textContent = new Date().getFullYear();
     </script>
