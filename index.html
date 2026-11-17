@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Garba Joseph - Mobile Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera - Mobile Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
                     colors: {
                         brand: {
                             50: '#f5f3ff',
@@ -29,318 +20,463 @@
                             700: '#6d28d9',
                             900: '#4c1d95',
                         }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar for inner container */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.05); }
+        }
+        .animate-pulse-slow {
+            animation: pulse-slow 6s infinite ease-in-out;
+        }
+    </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-0 sm:p-4 bg-slate-950">
+<body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col items-center justify-center p-0 sm:p-4 selection:bg-brand-500 selection:text-white">
 
-    <!-- Mobile Frame Wrapper -->
-    <div class="relative w-full sm:w-[390px] h-screen sm:h-[844px] bg-slate-900 sm:rounded-[40px] sm:border-[8px] sm:border-slate-800 shadow-2xl flex flex-col overflow-hidden">
+    <!-- Background Ambient Glows -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute -top-40 -left-40 w-96 h-96 bg-purple-900/30 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div class="absolute top-1/2 -right-40 w-96 h-96 bg-indigo-900/20 rounded-full blur-3xl animate-pulse-slow" style="animation-delay: 2s;"></div>
+    </div>
+
+    <!-- Main Smartphone Frame Wrapper -->
+    <div class="relative z-10 w-full max-w-md sm:max-w-sm md:max-w-md flex flex-col h-screen sm:h-[860px] sm:rounded-[48px] sm:border-[8px] sm:border-slate-800 bg-slate-900/90 sm:shadow-2xl overflow-hidden backdrop-blur-xl">
         
-        <!-- Top Status Bar -->
-        <div class="bg-slate-950/80 backdrop-blur-md pt-3 px-6 pb-2 flex justify-between items-center text-xs font-semibold text-slate-400 z-50 select-none">
-            <span>9:41</span>
-            <!-- Dynamic Island / Notch -->
-            <div class="w-20 h-4 bg-black rounded-full mx-auto absolute left-1/2 -translate-x-1/2 top-2"></div>
-            <div class="flex items-center space-x-2">
+        <!-- Smartphone Speaker / Notch Bar (Visible on desktop frame) -->
+        <div class="hidden sm:flex absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-slate-800 rounded-b-2xl z-50 items-center justify-center">
+            <div class="w-12 h-1 bg-slate-700 rounded-full"></div>
+            <div class="w-2 h-2 bg-slate-700 rounded-full ml-2"></div>
+        </div>
+
+        <!-- Top Status Bar (Time, Signal, Battery) -->
+        <div class="flex justify-between items-center px-6 pt-3 pb-2 text-xs text-slate-400 select-none z-40 bg-slate-900/95 backdrop-blur-md">
+            <span id="current-time" class="font-semibold text-slate-300">9:41</span>
+            <div class="flex items-center space-x-2 text-slate-300">
                 <i class="fa-solid fa-signal text-[10px]"></i>
                 <i class="fa-solid fa-wifi text-[10px]"></i>
                 <i class="fa-solid fa-battery-full text-xs"></i>
             </div>
         </div>
 
-        <!-- Top Media Icons Bar (Brightness / Volume / Media Controls) -->
-        <div class="bg-slate-900/90 px-6 py-2 flex items-center justify-between border-b border-slate-800/60 z-40 text-slate-400">
-            <div class="flex items-center space-x-3">
-                <button onclick="toggleAudio()" id="audioBtn" class="hover:text-brand-500 transition"><i class="fa-solid fa-volume-high text-xs"></i></button>
-                <button onclick="toggleTheme()" class="hover:text-brand-500 transition"><i class="fa-solid fa-moon text-xs" id="themeIcon"></i></button>
-            </div>
-            <div class="text-[10px] tracking-wider uppercase font-bold text-slate-500">Portfolio OS</div>
-            <div class="flex items-center space-x-3">
-                <button onclick="triggerVibrate()" class="hover:text-brand-500 transition"><i class="fa-solid fa-bolt text-xs"></i></button>
-                <button onclick="openShare()" class="hover:text-brand-500 transition"><i class="fa-solid fa-share-nodes text-xs"></i></button>
-            </div>
-        </div>
+        <!-- Navigation Bar right below Status Bar with Icons and Single-Word Descriptions -->
+        <nav class="px-3 py-2.5 bg-slate-900/95 border-b border-slate-800/80 sticky top-0 z-30 backdrop-blur-md flex justify-around items-center">
+            <button onclick="switchPage('home')" id="nav-btn-home" class="flex flex-col items-center group transition active:scale-95">
+                <div id="nav-icon-home" class="w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-md transition">
+                    <i class="fa-solid fa-house text-xs"></i>
+                </div>
+                <span id="nav-text-home" class="text-[10px] font-semibold text-brand-400 mt-1">Home</span>
+            </button>
 
-        <!-- Navigation Icons Bar right below Media Icons (with single-word descriptions) -->
-        <div class="bg-slate-950/95 px-4 py-3 border-b border-slate-800/80 grid grid-cols-5 gap-1 z-45 select-none shadow-sm">
-            <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center group text-brand-500 transition" data-target="home">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500 group-hover:bg-brand-500/10 transition shadow-sm">
-                    <i class="fa-solid fa-house text-sm"></i>
+            <button onclick="switchPage('about')" id="nav-btn-about" class="flex flex-col items-center group transition active:scale-95">
+                <div id="nav-icon-about" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 text-slate-400 group-hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-user-gear text-xs"></i>
                 </div>
-                <span class="text-[10px] mt-1 font-medium tracking-tight">Home</span>
+                <span id="nav-text-about" class="text-[10px] font-medium text-slate-400 mt-1">About</span>
             </button>
-            <button onclick="switchTab('about')" class="nav-btn flex flex-col items-center group text-slate-400 hover:text-slate-200 transition" data-target="about">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500 group-hover:bg-brand-500/10 transition shadow-sm">
-                    <i class="fa-solid fa-user text-sm"></i>
-                </div>
-                <span class="text-[10px] mt-1 font-medium tracking-tight">About</span>
-            </button>
-            <button onclick="switchTab('projects')" class="nav-btn flex flex-col items-center group text-slate-400 hover:text-slate-200 transition" data-target="projects">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500 group-hover:bg-brand-500/10 transition shadow-sm">
-                    <i class="fa-solid fa-code text-sm"></i>
-                </div>
-                <span class="text-[10px] mt-1 font-medium tracking-tight">Projects</span>
-            </button>
-            <button onclick="switchTab('services')" class="nav-btn flex flex-col items-center group text-slate-400 hover:text-slate-200 transition" data-target="services">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500 group-hover:bg-brand-500/10 transition shadow-sm">
-                    <i class="fa-solid fa-layer-group text-sm"></i>
-                </div>
-                <span class="text-[10px] mt-1 font-medium tracking-tight">Services</span>
-            </button>
-            <button onclick="switchTab('contact')" class="nav-btn flex flex-col items-center group text-slate-400 hover:text-slate-200 transition" data-target="contact">
-                <div class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center group-hover:border-brand-500 group-hover:bg-brand-500/10 transition shadow-sm">
-                    <i class="fa-solid fa-envelope text-sm"></i>
-                </div>
-                <span class="text-[10px] mt-1 font-medium tracking-tight">Contact</span>
-            </button>
-        </div>
 
-        <!-- Scrollable Phone Screen Content -->
-        <div class="phone-screen flex-1 overflow-y-auto px-5 py-6 space-y-6 pb-12">
+            <button onclick="switchPage('projects')" id="nav-btn-projects" class="flex flex-col items-center group transition active:scale-95">
+                <div id="nav-icon-projects" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 text-slate-400 group-hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-layer-group text-xs"></i>
+                </div>
+                <span id="nav-text-projects" class="text-[10px] font-medium text-slate-400 mt-1">Projects</span>
+            </button>
+
+            <button onclick="switchPage('experience')" id="nav-btn-experience" class="flex flex-col items-center group transition active:scale-95">
+                <div id="nav-icon-experience" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 text-slate-400 group-hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-briefcase text-xs"></i>
+                </div>
+                <span id="nav-text-experience" class="text-[10px] font-medium text-slate-400 mt-1">Experience</span>
+            </button>
+
+            <button onclick="switchPage('contact')" id="nav-btn-contact" class="flex flex-col items-center group transition active:scale-95">
+                <div id="nav-icon-contact" class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 text-slate-400 group-hover:text-white flex items-center justify-center transition">
+                    <i class="fa-solid fa-envelope text-xs"></i>
+                </div>
+                <span id="nav-text-contact" class="text-[10px] font-medium text-slate-400 mt-1">Contact</span>
+            </button>
+        </nav>
+
+        <!-- Scrollable Content Area -->
+        <main id="main-scroll" class="flex-1 overflow-y-auto no-scrollbar relative p-6 pb-12">
             
-            <!-- HOME TAB -->
-            <div id="home" class="tab-content active space-y-6">
-                <!-- Profile Header -->
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-500 p-1 shadow-lg shadow-purple-500/20">
-                            <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center overflow-hidden">
-                                <span class="text-2xl font-bold text-white">GJ</span>
-                            </div>
-                        </div>
-                        <span class="absolute bottom-0 right-0 w-4 h-4 bg-emerald-500 border-2 border-slate-900 rounded-full"></span>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-white tracking-tight">Garba Joseph</h1>
-                        <p class="text-xs text-brand-400 font-semibold mt-0.5">Software Developer & Designer</p>
-                        <p class="text-[11px] text-slate-400 mt-1 flex items-center">
-                            <i class="fa-solid fa-location-dot mr-1 text-slate-500"></i> Jos, Nigeria
-                        </p>
-                    </div>
+            <!-- PAGE 1: HOME -->
+            <div id="page-home" class="portfolio-page flex flex-col items-center text-center space-y-4 animate-fade">
+                <div class="relative mt-2 group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-500 to-indigo-600 rounded-full blur opacity-70 group-hover:opacity-100 transition duration-300"></div>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400" alt="Alex Rivera" class="relative w-28 h-28 rounded-full object-cover border-4 border-slate-900 shadow-xl">
                 </div>
 
-                <!-- Quick Status Card -->
-                <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 backdrop-blur-sm relative overflow-hidden">
-                    <div class="absolute top-0 right-0 w-24 h-24 bg-purple-500/10 rounded-full blur-xl pointer-events-none"></div>
-                    <div class="flex items-center justify-between mb-2">
-                        <span class="text-[10px] uppercase tracking-wider font-bold text-slate-400">Current Status</span>
-                        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full mr-1.5 animate-pulse"></span> Available for Hire
-                        </span>
-                    </div>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Building modern web applications, digital tools, and crafting high-impact brand experiences.
+                <div>
+                    <h2 class="text-2xl font-bold tracking-tight text-white mb-1 flex items-center justify-center gap-1.5">
+                        Alex Rivera <i class="fa-solid fa-circle-check text-brand-500 text-xs"></i>
+                    </h2>
+                    <p class="text-xs font-medium text-brand-400 mb-2">Product UI/UX & Fullstack Dev</p>
+                    <p class="text-xs text-slate-400 max-w-xs leading-relaxed mx-auto">
+                        Passionate about clean code, intuitive micro-interactions, and high-performance design systems. Currently crafting next-gen SaaS tools.
                     </p>
                 </div>
 
-                <!-- Action Buttons -->
-                <div class="grid grid-cols-2 gap-3">
-                    <button onclick="switchTab('projects')" class="w-full py-3 px-4 bg-brand-600 hover:bg-brand-700 text-white font-semibold rounded-xl text-xs transition shadow-lg shadow-brand-600/25 flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-code"></i>
-                        <span>View Projects</span>
-                    </button>
-                    <button onclick="switchTab('contact')" class="w-full py-3 px-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-xl text-xs transition border border-slate-700/60 flex items-center justify-center space-x-2">
-                        <i class="fa-solid fa-paper-plane"></i>
-                        <span>Let's Talk</span>
-                    </button>
+                <!-- Social Quick Buttons -->
+                <div class="flex items-center justify-center space-x-3 w-full pt-1">
+                    <a href="https://github.com" target="_blank" class="flex-1 py-2.5 px-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-xl text-xs font-medium text-slate-200 flex items-center justify-center space-x-2 transition active:scale-95 shadow-sm">
+                        <i class="fa-brands fa-github text-sm"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="flex-1 py-2.5 px-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-xl text-xs font-medium text-slate-200 flex items-center justify-center space-x-2 transition active:scale-95 shadow-sm">
+                        <i class="fa-brands fa-linkedin text-sm text-blue-400"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="py-2.5 px-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 rounded-xl text-xs font-medium text-slate-200 flex items-center justify-center transition active:scale-95 shadow-sm">
+                        <i class="fa-brands fa-x-twitter text-sm"></i>
+                    </a>
                 </div>
 
-                <!-- Recent Highlights -->
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Core Expertise</h3>
-                    <div class="grid grid-cols-2 gap-2.5">
-                        <div class="bg-slate-900/60 border border-slate-800/60 p-3 rounded-xl">
-                            <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center mb-2">
-                                <i class="fa-solid fa-laptop-code text-sm"></i>
-                            </div>
-                            <h4 class="text-xs font-bold text-white">Web Development</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">Frontend architecture & C# apps</p>
-                        </div>
-                        <div class="bg-slate-900/60 border border-slate-800/60 p-3 rounded-xl">
-                            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center mb-2">
-                                <i class="fa-solid fa-palette text-sm"></i>
-                            </div>
-                            <h4 class="text-xs font-bold text-white">Visual Design</h4>
-                            <p class="text-[11px] text-slate-400 mt-0.5">Brand strategy & UI/UX assets</p>
-                        </div>
-                    </div>
+                <!-- Call to action pill -->
+                <div class="w-full bg-gradient-to-r from-brand-600 to-indigo-600 rounded-2xl p-4 text-left shadow-lg relative overflow-hidden mt-2">
+                    <div class="absolute right-0 top-0 bottom-0 w-24 bg-white/10 transform skew-x-12 pointer-events-none"></div>
+                    <span class="inline-block px-2 py-0.5 bg-white/20 rounded-md text-[10px] font-semibold text-white uppercase tracking-wider mb-1">Availability</span>
+                    <h3 class="text-sm font-bold text-white mb-1">Open for Freelance & Full-time</h3>
+                    <p class="text-[11px] text-purple-100 mb-3">Let's discuss your next breakthrough project.</p>
+                    <button onclick="switchPage('contact')" class="px-4 py-2 bg-white text-brand-900 rounded-xl text-xs font-bold hover:bg-slate-100 transition shadow">
+                        Get in Touch <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
                 </div>
             </div>
 
-            <!-- ABOUT TAB -->
-            <div id="about" class="tab-content space-y-6">
-                <div>
-                    <h2 class="text-lg font-bold text-white mb-1">About Me</h2>
-                    <p class="text-xs text-slate-400">Background, skills & professional experience.</p>
-                </div>
-
-                <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 text-xs text-slate-300 leading-relaxed space-y-3">
-                    <p>
-                        I am a versatile software developer, graphic designer, and business strategist based in Jos, Nigeria. I combine analytical engineering logic with creative visual branding to solve real-world problems.
-                    </p>
-                    <p>
-                        Currently pursuing computer science coursework through BYU-Pathway Worldwide while co-founding ventures and building digital management tools.
-                    </p>
-                </div>
-
-                <div>
-                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Tech Stack & Skills</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">HTML5 / CSS3</span>
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">JavaScript (ES6+)</span>
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">C# / OOP</span>
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">Tailwind CSS</span>
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">Graphic Design</span>
-                        <span class="px-3 py-1.5 bg-slate-900 border border-slate-800 rounded-lg text-xs font-medium text-slate-300">UI/UX Prototyping</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- PROJECTS TAB -->
-            <div id="projects" class="tab-content space-y-6">
-                <div>
-                    <h2 class="text-lg font-bold text-white mb-1">Featured Projects</h2>
-                    <p class="text-xs text-slate-400">Recent applications and platforms built.</p>
+            <!-- PAGE 2: ABOUT -->
+            <div id="page-about" class="portfolio-page hidden space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-user-gear text-brand-500"></i> Expertise & Skills
+                    </h3>
                 </div>
 
                 <div class="space-y-3">
-                    <!-- Project 1 -->
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 space-y-2.5">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xs font-bold text-white text-base">Managira ERP Platform</h3>
-                            <span class="px-2 py-0.5 bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-md text-[10px]">Cloud ERP</span>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm">
+                        <h4 class="text-xs font-semibold text-slate-300 mb-2.5 flex items-center gap-2">
+                            <i class="fa-solid fa-code text-brand-400"></i> Frontend Development
+                        </h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-react text-cyan-400"></i> React / Next.js</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-wind text-teal-400"></i> Tailwind CSS</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-js text-yellow-400"></i> TypeScript</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-vuejs text-emerald-400"></i> Vue.js</span>
                         </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Cloud-based school management software platform streamlining administrative reporting and student workflows.
-                        </p>
-                        <div class="flex items-center space-x-2 pt-1">
-                            <span class="text-[10px] text-slate-500 font-medium">Role: Content Manager & Dev Lead</span>
+                    </div>
+
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm">
+                        <h4 class="text-xs font-semibold text-slate-300 mb-2.5 flex items-center gap-2">
+                            <i class="fa-solid fa-server text-indigo-400"></i> Backend & Cloud
+                        </h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-node text-green-500"></i> Node.js</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-database text-blue-400"></i> PostgreSQL</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-fire text-amber-500"></i> Firebase</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-docker text-blue-500"></i> Docker</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm">
+                        <h4 class="text-xs font-semibold text-slate-300 mb-2.5 flex items-center gap-2">
+                            <i class="fa-solid fa-pen-nib text-purple-400"></i> Design & Tools
+                        </h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-figma text-pink-400"></i> Figma</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> UI Systems</span>
+                            <span class="px-2.5 py-1 bg-slate-800/80 border border-slate-700/60 rounded-lg text-[11px] text-slate-300 flex items-center gap-1.5"><i class="fa-brands fa-git-alt text-orange-500"></i> Git Flow</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: PROJECTS -->
+            <div id="page-projects" class="portfolio-page hidden space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-brand-500"></i> Featured Works
+                    </h3>
+                    <span class="text-[10px] text-brand-400 font-medium">3 Projects</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Project 1 -->
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-lg group hover:border-brand-500/50 transition duration-300">
+                        <div class="relative h-36 overflow-hidden bg-slate-800">
+                            <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" alt="Nova AI" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 bg-brand-600/90 backdrop-blur-md rounded-full text-[10px] font-bold text-white">AI SaaS</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="text-sm font-bold text-white mb-1">Nova AI Assistant</h4>
+                            <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+                                A mobile-first workspace utilizing generative AI to compose copy, summarize notes, and design layouts instantly.
+                            </p>
+                            <div class="flex flex-wrap gap-1 mb-4">
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">Next.js</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">OpenAI</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">Tailwind</span>
+                            </div>
+                            <button onclick="openModal('Nova AI Assistant', 'A high-performance generative AI workspace built for mobile and desktop users. Features real-time streaming tokens, voice dictation notes, and custom prompt templates.', 'https://github.com', 'https://example.com')" class="w-full py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-semibold transition text-center shadow-sm">
+                                View Details
+                            </button>
                         </div>
                     </div>
 
                     <!-- Project 2 -->
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 space-y-2.5">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xs font-bold text-white text-base">Anaguta Tradomodern</h3>
-                            <span class="px-2 py-0.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 rounded-md text-[10px]">Culture & Tech</span>
+                    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-lg group hover:border-brand-500/50 transition duration-300">
+                        <div class="relative h-36 overflow-hidden bg-slate-800">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="FinPulse" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                            <span class="absolute top-3 right-3 px-2 py-0.5 bg-emerald-600/90 backdrop-blur-md rounded-full text-[10px] font-bold text-white">Fintech</span>
                         </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Digital cultural preservation initiative featuring web apps, native language audio dictionaries, and heritage storytelling.
+                        <div class="p-4">
+                            <h4 class="text-sm font-bold text-white mb-1">FinPulse Mobile Banking</h4>
+                            <p class="text-xs text-slate-400 mb-3 leading-relaxed">
+                                Neo-banking app interface featuring real-time crypto & stock analytics, micro-savings vaults, and instant peer transfers.
+                            </p>
+                            <div class="flex flex-wrap gap-1 mb-4">
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">React Native</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">Node.js</span>
+                                <span class="text-[10px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded">PostgreSQL</span>
+                            </div>
+                            <button onclick="openModal('FinPulse Mobile Banking', 'An immersive neo-banking experience designed for Gen Z investors. Includes biometric login simulations, interactive charts powered by Chart.js, and instant transaction notifications.', 'https://github.com', 'https://example.com')" class="w-full py-2 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-semibold transition text-center shadow-sm">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 4: EXPERIENCE -->
+            <div id="page-experience" class="portfolio-page hidden space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-briefcase text-brand-500"></i> Work & Education
+                    </h3>
+                </div>
+
+                <div class="relative pl-6 space-y-6 before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-800">
+                    <div class="relative">
+                        <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 bg-brand-500 border-4 border-slate-900 rounded-full"></span>
+                        <span class="text-[10px] font-semibold text-brand-400 bg-brand-950/60 px-2 py-0.5 rounded border border-brand-800/50">2023 - Present</span>
+                        <h4 class="text-xs font-bold text-white mt-1">Senior Frontend Engineer</h4>
+                        <p class="text-[11px] text-slate-400 font-medium">Vercel / Remote</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Leading design system architecture and mobile web performance optimization for global enterprise clientele.
                         </p>
-                        <div class="flex items-center space-x-2 pt-1">
-                            <span class="text-[10px] text-slate-500 font-medium">Role: Core Administrator & Dev</span>
-                        </div>
                     </div>
 
-                    <!-- Project 3 -->
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 space-y-2.5">
-                        <div class="flex justify-between items-start">
-                            <h3 class="text-xs font-bold text-white text-base">Financial Calculator Tool</h3>
-                            <span class="px-2 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-md text-[10px]">Vanilla JS</span>
-                        </div>
-                        <p class="text-xs text-slate-400 leading-relaxed">
-                            Lightweight business calculator incorporating Nigerian 7.5% VAT, break-even analysis, and profit margin formatting.
+                    <div class="relative">
+                        <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 bg-slate-700 border-4 border-slate-900 rounded-full"></span>
+                        <span class="text-[10px] font-semibold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">2021 - 2023</span>
+                        <h4 class="text-xs font-bold text-white mt-1">UI/UX Product Designer</h4>
+                        <p class="text-[11px] text-slate-400 font-medium">Stripe / San Francisco</p>
+                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
+                            Designed checkout flows and merchant dashboards used by millions of monthly active businesses.
                         </p>
-                        <div class="flex items-center space-x-2 pt-1">
-                            <span class="text-[10px] text-slate-500 font-medium">Role: Creator</span>
-                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 bg-slate-700 border-4 border-slate-900 rounded-full"></span>
+                        <span class="text-[10px] font-semibold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">2017 - 2021</span>
+                        <h4 class="text-xs font-bold text-white mt-1">B.S. in Computer Science</h4>
+                        <p class="text-[11px] text-slate-400 font-medium">UC Berkeley</p>
                     </div>
                 </div>
             </div>
 
-            <!-- SERVICES TAB -->
-            <div id="services" class="tab-content space-y-6">
-                <div>
-                    <h2 class="text-lg font-bold text-white mb-1">Services</h2>
-                    <p class="text-xs text-slate-400">How we can work together.</p>
+            <!-- PAGE 5: CONTACT -->
+            <div id="page-contact" class="portfolio-page hidden space-y-4">
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-brand-500"></i> Let's Connect
+                    </h3>
                 </div>
 
-                <div class="space-y-3">
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-start space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-code text-base"></i>
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="mailto:alex.rivera.dev@example.com" class="p-3 bg-slate-900/80 border border-slate-800 hover:border-brand-500/50 rounded-2xl flex flex-col items-center text-center transition group shadow-sm">
+                        <div class="w-9 h-9 rounded-xl bg-brand-950/80 border border-brand-800/50 text-brand-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-envelope text-xs"></i>
                         </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-white text-sm">Frontend Web Development</h3>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Custom responsive web apps, landing pages, and interactive UI built with clean vanilla JS or React.</p>
-                        </div>
-                    </div>
+                        <span class="text-xs font-bold text-white">Email Me</span>
+                        <span class="text-[10px] text-slate-400">Direct Inquiries</span>
+                    </a>
 
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-start space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-pen-nib text-base"></i>
+                    <a href="https://wa.me/1234567890" target="_blank" class="p-3 bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 rounded-2xl flex flex-col items-center text-center transition group shadow-sm">
+                        <div class="w-9 h-9 rounded-xl bg-emerald-950/80 border border-emerald-800/50 text-emerald-400 flex items-center justify-center mb-2 group-hover:scale-110 transition">
+                            <i class="fa-brands fa-whatsapp text-sm"></i>
                         </div>
-                        <div>
-                            <h3 class="text-xs font-bold text-white text-sm">Visual Branding & Design</h3>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Brand identity, motion graphics, promotional carousels, and visual content strategy.</p>
-                        </div>
-                    </div>
+                        <span class="text-xs font-bold text-white">WhatsApp</span>
+                        <span class="text-[10px] text-slate-400">Quick Chat</span>
+                    </a>
+                </div>
 
-                    <div class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-start space-x-3">
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
-                            <i class="fa-solid fa-bullhorn text-base"></i>
+                <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 shadow-sm">
+                    <h4 class="text-xs font-semibold text-white mb-3">Send a Message</h4>
+                    <form onsubmit="handleFormSubmit(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-[10px] font-medium text-slate-400 mb-1">Your Name</label>
+                            <input type="text" id="form-name" required placeholder="Jane Doe" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-brand-500 transition">
                         </div>
                         <div>
-                            <h3 class="text-xs font-bold text-white text-sm">Content Management</h3>
-                            <p class="text-xs text-slate-400 mt-1 leading-relaxed">Social media strategy, digital communication management, and community growth initiatives.</p>
+                            <label class="block text-[10px] font-medium text-slate-400 mb-1">Your Email</label>
+                            <input type="email" id="form-email" required placeholder="jane@company.com" class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-brand-500 transition">
                         </div>
-                    </div>
+                        <div>
+                            <label class="block text-[10px] font-medium text-slate-400 mb-1">Message</label>
+                            <textarea id="form-msg" rows="3" required placeholder="Tell me about your project..." class="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:outline-none focus:border-brand-500 transition resize-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white rounded-xl text-xs font-bold transition shadow-md active:scale-95">
+                            Send Message <i class="fa-solid fa-paper-plane ml-1.5 text-[10px]"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
 
-            <!-- CONTACT TAB -->
-            <div id="contact" class="tab-content space-y-6">
-                <div>
-                    <h2 class="text-lg font-bold text-white mb-1">Get in Touch</h2>
-                    <p class="text-xs text-slate-400">Let's collaborate on your next project.</p>
-                </div>
+        </main>
 
-                <div class="space-y-3">
-                    <a href="mailto:contact@example.com" class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-center space-x-3 hover:border-brand-500/50 transition">
-                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
-                            <i class="fa-solid fa-envelope text-sm"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">Email Me</span>
-                            <span class="text-xs font-bold text-white">joseph@example.com</span>
-                        </div>
-                    </a>
+        <!-- Home Bar Indicator (iOS style) -->
+        <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-slate-700 rounded-full pointer-events-none z-50 sm:block hidden"></div>
+    </div>
 
-                    <a href="https://linkedin.com" target="_blank" class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-center space-x-3 hover:border-brand-500/50 transition">
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center">
-                            <i class="fa-brands fa-linkedin-in text-sm"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">LinkedIn</span>
-                            <span class="text-xs font-bold text-white">connect/garbajoseph</span>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com" target="_blank" class="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-4 flex items-center space-x-3 hover:border-brand-500/50 transition">
-                        <div class="w-10 h-10 rounded-xl bg-slate-800 text-slate-200 flex items-center justify-center">
-                            <i class="fa-brands fa-github text-sm"></i>
-                        </div>
-                        <div>
-                            <span class="text-[10px] text-slate-400 block font-semibold uppercase tracking-wider">GitHub</span>
-                            <span class="text-xs font-bold text-white">github.com/garbajoseph</span>
-                        </div>
-                    </a>
-                </div>
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl w-full max-w-xs sm:max-w-sm p-6 shadow-2xl relative transform transition-all scale-95 opacity-0" id="modal-content">
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+            <span class="inline-block px-2.5 py-0.5 bg-brand-950 text-brand-400 border border-brand-800/60 rounded-full text-[10px] font-semibold mb-2">Project Overview</span>
+            <h3 id="modal-title" class="text-base font-bold text-white mb-2">Project Title</h3>
+            <p id="modal-desc" class="text-xs text-slate-300 leading-relaxed mb-6">Detailed project description goes here...</p>
+            <div class="flex space-x-2">
+                <a id="modal-demo" href="#" target="_blank" class="flex-1 py-2.5 bg-brand-600 hover:bg-brand-500 text-white rounded-xl text-xs font-semibold text-center transition shadow">
+                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[10px]"></i>
+                </a>
+                <a id="modal-code" href="#" target="_blank" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-semibold text-center transition border border-slate-700">
+                    <i class="fa-brands fa-github text-sm"></i>
+                </a>
             </div>
-
-        </div>
-
-        <!-- Bottom Home Indicator Bar -->
-        <div class="bg-slate-950 py-2 flex justify-center items-center z-50">
-            <div class="w-32 h-1 bg-slate-700 rounded-full"></div>
         </div>
     </div>
 
-    <!-- JavaScript Link -->
-    <script src="script.js"></script>
+    <!-- Toast Notification Message Box -->
+    <div id="toast" class="fixed top-6 left-1/2 transform -translate-x-1/2 -translate-y-20 opacity-0 transition-all duration-300 z-50 bg-emerald-600 text-white px-4 py-2.5 rounded-2xl shadow-xl flex items-center space-x-2 text-xs font-semibold pointer-events-none">
+        <i class="fa-solid fa-circle-check text-sm"></i>
+        <span id="toast-text">Message sent successfully!</span>
+    </div>
+
+    <script>
+        // Update live clock
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('current-time').innerText = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Page Switching Logic (Top Navigation Icons with single-word descriptions)
+        function switchPage(pageName) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.portfolio-page');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageName}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Scroll container back to top
+            const container = document.getElementById('main-scroll');
+            if (container) {
+                container.scrollTop = 0;
+            }
+
+            // Update Top Navigation states
+            const navItems = ['home', 'about', 'projects', 'experience', 'contact'];
+            navItems.forEach(item => {
+                const iconBox = document.getElementById(`nav-icon-${item}`);
+                const textBox = document.getElementById(`nav-text-${item}`);
+
+                if (item === pageName) {
+                    iconBox.className = "w-9 h-9 rounded-xl bg-brand-600 text-white flex items-center justify-center shadow-md transition";
+                    textBox.className = "text-[10px] font-semibold text-brand-400 mt-1";
+                } else {
+                    iconBox.className = "w-9 h-9 rounded-xl bg-slate-800 border border-slate-700/80 text-slate-400 group-hover:text-white flex items-center justify-center transition";
+                    textBox.className = "text-[10px] font-medium text-slate-400 mt-1";
+                }
+            });
+        }
+
+        // Modal Controls
+        function openModal(title, desc, githubUrl, demoUrl) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-code').href = githubUrl;
+            document.getElementById('modal-demo').href = demoUrl;
+
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        // Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = message;
+            toast.classList.remove('-translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('-translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Form Submit Handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value;
+            showToast(`Thanks ${name}! Message sent successfully.`);
+            e.target.reset();
+        }
+    </script>
 </body>
 </html>
