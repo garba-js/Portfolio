@@ -1,6 +1,7 @@
 /* GARBA JOSEPH PORTFOLIO - app logic. Content lives in data/content.js */
 document.addEventListener('DOMContentLoaded', () => {
   const C = window.CONTENT, $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
   // 1. Clock (Jos time, whatever the visitor's timezone)
@@ -10,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   tick();
 
   const fmtDate = d => new Date(d + 'T00:00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+
+  C.projects.forEach(p => { p.kind = 'project'; p.id = p.id || slug(p.title); });
 
   // 2. Render content from data file
   $('#about-pro').innerHTML = C.about.professional.map(g => `
@@ -21,17 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
     <div class="glass-card"><h3 class="card-heading">Interests</h3><div class="pill-list">${p.interests.map(i => `<span class="chip">${esc(i)}</span>`).join('')}</div>
     <h3 class="card-heading" style="margin-top:16px">Values</h3><div class="pill-list">${p.values.map(i => `<span class="chip">${esc(i)}</span>`).join('')}</div></div></div>`;
   $('#projects-grid').innerHTML = C.projects.map((x, i) => `
-    <article class="project-card"><div class="project-thumb"><div class="cover c-${esc(x.accent)}"><i class="fa-solid ${esc(x.icon)}"></i></div>
+    <article class="project-card${x.featured ? ' featured' : ''}"><div class="project-thumb">${x.cover ? `<img src="${esc(x.cover)}" alt="${esc(x.title)}" loading="lazy" decoding="async">` : `<div class="cover c-${esc(x.accent)}"><i class="fa-solid ${esc(x.icon)}"></i></div>`}
     <span class="project-tag tag-purple">${esc(x.tag)}</span></div>
     <div class="project-body"><h3>${esc(x.title)}</h3><p>${esc(x.desc)}</p>
     <div class="tech-tags">${x.stack.map(s => `<span>${esc(s)}</span>`).join('')}</div>
-    <button class="btn-primary open-modal-btn" data-i="${i}">View Details</button></div></article>`).join('');
+    ${x.body ? `<a class="btn-primary" href="#${esc(x.id)}" data-story="1">View Details</a>` : `<button class="btn-primary open-modal-btn" data-i="${i}">View Details</button>`}</div></article>`).join('');
   const acts = [...C.activity].sort((a, b) => b.date.localeCompare(a.date));
   $('#activity-feed').innerHTML = acts.length ? acts.map(a => {
     const d = fmtDate(a.date), story = !!(a.id && a.body);
     const tag = story || a.link ? 'a' : 'div';
     const attrs = story ? ` href="#${esc(a.id)}" data-story="1"` : a.link ? ` href="${esc(a.link)}" target="_blank" rel="noopener"` : '';
-    return `<${tag} class="glass-card post"${attrs}><div class="post-meta"><span class="post-type">${esc(a.type)}</span><span>${d}</span></div>
+    return `<${tag} class="glass-card post${a.featured ? ' featured' : ''}${a.cover ? ' has-img' : ''}"${attrs}>${a.cover ? `<div class="post-img"><img src="${esc(a.cover)}" alt="" loading="lazy" decoding="async"></div>` : ''}<div class="post-meta"><span class="post-type">${esc(a.type)}</span>${a.featured ? '<span class="post-type hl">★ Highlight</span>' : ''}<span>${d}</span></div>
       <h3>${esc(a.title)}</h3><p>${esc(a.text)}</p>${story ? '<span class="more">Read story →</span>' : a.link ? '<span class="more">Read more →</span>' : ''}</${tag}>`;
   }).join('') : '<p class="empty">Nothing here yet.</p>';
   $('#proj-meta').textContent = `${C.projects.length} Projects · ${acts.length} Updates`;
@@ -117,14 +120,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. Story reader (opens from the feed, deep-linkable as #story-id)
   const reader = $('#reader'), rBody = $('#reader-body');
   let fromApp = false, curStory = null;
-  const storyById = id => C.activity.find(a => a.id === id && a.body);
+  const storyById = id => C.activity.find(a => a.id === id && a.body) || C.projects.find(p => p.id === id && p.body);
   const showToast = m => { $('#toast-text').textContent = m; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600); };
   function showStory(a) {
     curStory = a;
-    rBody.innerHTML = `<div class="r-cover c-green">${a.cover ? `<img src="${esc(a.cover)}" alt="" decoding="async">` : `<i class="fa-solid ${esc(a.icon || 'fa-newspaper')}"></i>`}</div>
-      <div class="r-wrap"><div class="post-meta"><span class="post-type">${esc(a.type)}</span><span>${fmtDate(a.date)}</span></div>
-      <h1 class="r-title">${esc(a.title)}</h1>${a.body.map(t => `<p>${esc(t)}</p>`).join('')}
-      ${a.link ? `<a class="btn-primary r-link" href="${esc(a.link)}" target="_blank" rel="noopener">Visit link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}</div>`;
+    const P = a.kind === 'project', li = t => `<li>${esc(t)}</li>`;
+    const meta = P ? `<span class="post-type">${esc(a.tag)}</span>${a.status ? `<span>${esc(a.status)}</span>` : ''}${a.year ? `<span>${esc(a.year)}</span>` : ''}`
+                   : `<span class="post-type">${esc(a.type)}</span><span>${fmtDate(a.date)}</span>`;
+    const links = P ? `<div class="r-actions">${a.demo ? `<a class="btn-primary r-link" href="${esc(a.demo)}" target="_blank" rel="noopener">Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : ''}${a.github ? `<a class="btn-primary r-link ghost" href="${esc(a.github)}" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Code</a>` : ''}</div>`
+                    : (a.link ? `<a class="btn-primary r-link" href="${esc(a.link)}" target="_blank" rel="noopener">Visit link <i class="fa-solid fa-arrow-up-right-from-square"></i></a>` : '');
+    rBody.innerHTML = `<div class="r-cover c-${esc(a.accent || 'green')}">${a.cover ? `<img src="${esc(a.cover)}" alt="" decoding="async">` : `<i class="fa-solid ${esc(a.icon || 'fa-newspaper')}"></i>`}</div>
+      <div class="r-wrap"><div class="post-meta">${meta}</div>
+      <h1 class="r-title">${esc(a.title)}</h1>
+      ${P ? `<p class="r-lead">${esc(a.desc)}</p>${a.role ? `<p class="r-role"><strong>My role:</strong> ${esc(a.role)}</p>` : ''}` : ''}
+      ${a.body.map(t => `<p>${esc(t)}</p>`).join('')}
+      ${P && a.highlights && a.highlights.length ? `<h2 class="r-h">Key features</h2><ul class="r-list">${a.highlights.map(li).join('')}</ul>` : ''}
+      ${P && a.stack ? `<h2 class="r-h">Built with</h2><div class="chip-group">${a.stack.map(s => `<span class="chip">${esc(s)}</span>`).join('')}</div>` : ''}
+      ${links}</div>`;
     rBody.scrollTop = 0;
     reader.classList.add('open'); reader.setAttribute('aria-hidden', 'false');
     document.title = a.title + ' | Garba Joseph';
@@ -139,20 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const h = location.hash.slice(1), s = storyById(h);
     if (s) {
       go(names.indexOf('projects'), false);
-      const t = $('[data-tab="recent"]'); if (t) t.click();
+      const t = $(`[data-tab="${s.kind === 'project' ? 'featured' : 'recent'}"]`); if (t) t.click();
       showStory(s);
     } else {
       hideStory();
       const k = names.indexOf(h); if (k > -1) go(k, false);
     }
   }
-  $('#activity-feed').addEventListener('click', e => { if (e.target.closest('a[data-story]')) fromApp = true; });
+  ['#activity-feed', '#projects-grid'].forEach(s => $(s).addEventListener('click', e => { if (e.target.closest('a[data-story]')) fromApp = true; }));
   $('#reader-back').addEventListener('click', closeStory);
   addEventListener('keydown', e => { if (e.key === 'Escape' && curStory && !modal.classList.contains('open')) closeStory(); });
   addEventListener('hashchange', route);
   $('#reader-share').addEventListener('click', async () => {
     const a = curStory; if (!a) return;
-    const url = new URL(a.shareFile ? 'story-' + a.id + '.html' : '#' + a.id, location.href).href;
+    const url = new URL(a.shareFile ? (a.kind === 'project' ? 'project-' : 'story-') + a.id + '.html' : '#' + a.id, location.href).href;
     try {
       if (navigator.share) { await navigator.share({ title: a.title, text: a.text, url }); return; }
       await navigator.clipboard.writeText(url); showToast('Link copied');

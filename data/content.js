@@ -1,26 +1,73 @@
 /* ===== EDIT THIS FILE TO UPDATE YOUR SITE =====
    Add a new object to `activity` (newest date shows first) and save.
+   IMAGES: put photos in the images/ folder, then set  cover: 'images/yourphoto.jpg'  (projects and activity).
+   HIGHLIGHT: set  featured: true  to make a card larger and tagged as a highlight.
+   PROJECT DETAILS: add `body` (paragraphs), `highlights` (key features list), `role`, `year`, `status` (empty ones are hidden).
+   A project with `body` opens a full details page; without it, a small popup. `id` is optional (made from the title).
    Full story: add `id` (short-with-dashes), `body` (list of paragraphs), optional `cover` (image path like images/anaguta.jpg),
    `icon`, and `shareFile: true` once its share page exists (story-<id>.html). Without `body` it stays a short card. */
 window.CONTENT = {
   site: { email: 'garbajoseph@example.com', whatsapp: '2348000000000' },
   projects: [
-    { title: 'Managira School ERP', tag: 'Cloud ERP', icon: 'fa-school', accent: 'green',
+    { title: 'Managira School ERP', 
+      tag: 'Cloud ERP', 
+      icon: 'fa-school', 
+      accent: 'green',
       desc: 'Cloud-based school management platform streamlining reporting, attendance and student workflows.',
-      stack: ['Web App', 'Dashboard', 'UI/UX'], github: 'https://github.com', demo: 'https://example.com' },
-    { title: 'Anaguta Tradomodern', tag: 'Culture & Tech', icon: 'fa-landmark', accent: 'gold',
+      cover: '', 
+      featured: false, 
+      stack: ['Web App', 'Dashboard', 'UI/UX'],
+      id: 'managira-school-erp', shareFile: false, role: '', year: '', status: '',
+      highlights: ['Administrative reporting', 'Attendance tracking', 'Student workflows'],
+      body: [
+        'Dummy text. Explain the problem this project solves and who it is for: for example, schools that still keep records on paper.',
+        'Dummy text. Describe what you built or contributed, what makes it different, and any results (schools onboarded, hours saved, feedback received).'
+      ], 
+      github: 'https://github.com', 
+      demo: 'https://example.com' },
+    { title: 'Anaguta Tradomodern', 
+      tag: 'Culture & Tech', 
+      icon: 'fa-landmark', 
+      accent: 'gold',
       desc: 'Digital cultural preservation: progressive web app with native-language audio dictionary and heritage stories.',
-      stack: ['PWA', 'Audio Archive', 'JavaScript'], github: 'https://github.com', demo: 'https://example.com' },
-    { title: 'SME Profit & VAT Calculator', tag: 'Fintech Tool', icon: 'fa-calculator', accent: 'teal',
+      cover: 'images/an.jpeg', 
+      featured: false, 
+      stack: ['PWA', 'Audio Archive', 'JavaScript'],
+      id: 'anaguta-tradomodern', shareFile: true, role: '', year: '', status: '',
+      highlights: ['Native-language audio dictionary', 'Heritage stories and archives', 'Progressive web app'], 
+            "body": [
+        "Culture is not just preserved in books or museums. It lives in the physical landscape, the trails our ancestors walked, and the stories tied to our land.",
+        "Early this morning, our team set out on an expedition to explore and document key historical sites on Anaguta land, home to the indigenous Anaguta people of Jos North, Plateau State, Nigeria. What started as a planned hike turned into an engaging physical adventure through steep rocks, thick natural trails, and rugged terrain. The energy and determination of our team made the climb an incredible shared experience.",
+        "Reaching the summit rewarded us with an unforgettable view. Looking across the horizon, you realize this Anaguta land holds powerful heritage destinations, carrying centuries of history, community defense, and survival.",
+        "During the trip, we met with a local elder who shared the deep oral history behind this mountain. We recorded his knowledge, and we will be releasing the video recording soon on the Anaguta Tradomodern page. Before heading back, we visited the historic Amanza Waterfall, one of the most remarkable natural and historical landmarks on Anaguta land.",
+        "Plateau State offers rich cultural history and breathtaking natural sights for travelers, researchers, and culture enthusiasts. Through Anaguta Tradomodern, we are dedicated to opening up these heritage paths and sharing the story of the Anaguta people of Jos North with the world.",
+        "If you are passionate about cultural tourism, eco-adventure, or history, we invite you to follow our work and discover the unique heritage of Anaguta land."
+      ],
+      github: 'https://github.com', 
+      demo: 'https://example.com' },
+    { title: 'SME Profit & VAT Calculator', 
+      tag: 'Fintech Tool', 
+      icon: 'fa-calculator', 
+      accent: 'teal',
       desc: 'Lightweight calculator for 7.5% VAT, break-even analysis and profit-margin forecasting.',
-      stack: ['HTML5', 'CSS3', 'Vanilla JS'], github: 'https://github.com', demo: 'https://example.com' }
+      cover: '', 
+      featured: false, 
+      stack: ['HTML5', 'CSS3', 'Vanilla JS'],
+      id: 'sme-profit-vat-calculator', shareFile: false, role: '', year: '', status: '',
+      highlights: ['7.5% VAT computation', 'Break-even analysis', 'Profit-margin forecasting'],
+      body: [
+        'Dummy text. Say why small businesses need this tool and what question it answers in seconds.',
+        'Dummy text. Mention how it works, why it has no dependencies, and where people can use it.'
+      ], 
+      github: 'https://github.com', demo: 'https://example.com' }
   ],
   activity: [
     {
       "id": "anaguta-expedition",
       "shareFile": true,
       "icon": "fa-mountain-sun",
-      "cover": "",
+      "cover": "images/an.jpeg",
+      "featured": false,
       "date": "2026-11-18",
       "type": "Expedition",
       "title": "Connecting Culture, History, and Ecotourism: Experience the Heritage of Anaguta in Jos North",
