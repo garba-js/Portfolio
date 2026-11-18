@@ -1,372 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Garba Joseph - Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Garba Joseph | Developer, Designer & Community Servant</title>
+<meta name="description" content="Building digital & visual solutions for SMEs and brands in Jos, Nigeria.">
+<meta name="theme-color" content="#0c1512">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Garba Joseph | Developer, Designer & Community Servant">
+<meta property="og:description" content="Building digital & visual solutions for SMEs and brands in Jos, Nigeria.">
+<meta property="og:image" content="https://YOUR-DOMAIN.com/images/og/home.jpg">
+<meta property="og:url" content="https://YOUR-DOMAIN.com/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-
-    <!-- Ambient Background Glows -->
-    <div class="ambient-bg" aria-hidden="true">
-        <div class="glow glow-1"></div>
-        <div class="glow glow-2"></div>
+<div class="ambient-bg" aria-hidden="true"><div class="glow glow-1"></div><div class="glow glow-2"></div></div>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="tb-id">
+      <div class="tb-mono">GJ</div>
+      <div><span class="tb-name">Garba Joseph<i class="fa-solid fa-circle-check"></i></span><span class="tb-sub">Dev · Designer · Servant</span></div>
     </div>
+    <div class="tb-right">
+      <span><i class="fa-solid fa-location-dot"></i> Jos · <span id="current-time" class="tb-time">--:--</span></span>
+      <span class="tb-status"><span>Open to work</span></span>
+    </div>
+  </header>
 
-    <!-- Main Responsive Shell (Mobile Phone View on small screens, Adaptive App Container on Tablets/Desktops) -->
-    <div class="app-shell">
-        
-        <!-- Smartphone Notch (Visible on medium/tablet frames if desired, hidden on full desktop & small mobile) -->
-        <div class="device-notch" aria-hidden="true">
-            <div class="notch-speaker"></div>
-            <div class="notch-camera"></div>
+  <div class="app-body">
+  <nav class="app-nav" aria-label="Portfolio navigation">
+    <div class="desktop-brand"><div class="desktop-avatar">GJ</div><div><span class="desktop-name">Garba Joseph</span><span class="desktop-role">Dev & Designer</span></div></div>
+    <div class="nav-items" role="tablist">
+      <button class="nav-btn active" role="tab" data-index="0" data-page="home"><div class="nav-icon"><i class="fa-solid fa-house"></i></div><span class="nav-label">Home</span></button>
+      <button class="nav-btn" role="tab" data-index="1" data-page="about"><div class="nav-icon"><i class="fa-solid fa-user-gear"></i></div><span class="nav-label">About</span></button>
+      <button class="nav-btn" role="tab" data-index="2" data-page="projects"><div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div><span class="nav-label">Projects</span></button>
+      <button class="nav-btn" role="tab" data-index="3" data-page="experience"><div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div><span class="nav-label">Experience</span></button>
+      <button class="nav-btn" role="tab" data-index="4" data-page="contact"><div class="nav-icon"><i class="fa-solid fa-envelope"></i></div><span class="nav-label">Contact</span></button>
+    </div>
+    <div class="nav-indicator" id="nav-indicator"></div>
+  </nav>
+
+  <main class="pages-viewport" id="pages-viewport">
+   <div class="pages-track" id="pages-track">
+
+    <section id="page-home" class="portfolio-page"><div class="home-layout">
+      <div class="profile-hero">
+        <div class="avatar-wrapper"><div class="avatar-glow"></div>
+          <img src="images/headshot.jpg" alt="Garba Joseph" class="avatar-img" width="128" height="128" fetchpriority="high"></div>
+        <div class="hero-text">
+          <h1 class="hero-title">Garba Joseph Samson<i class="fa-solid fa-circle-check verified-icon"></i></h1>
+          <p class="hero-subtitle">Community Servant | Dev | Entrepreneur</p>
+          <p class="hero-bio">Building digital & visual solutions for real-world problems for SMEs & Brands. Building scalable digital solutions in Jos, Nigeria.</p>
         </div>
-
-        <!-- Top Status Bar (Mobile/Tablet style) -->
-        <header class="status-bar">
-            <span id="current-time" class="status-time">9:41</span>
-            <span class="brand-badge">Garba_js</span>
-        </header>
-
-        <!-- Adaptive Navigation (Top Icon Bar on Mobile, Sidebar on Desktop) -->
-        <nav class="app-nav" role="tablist" aria-label="Portfolio Navigation">
-            <div class="desktop-brand">
-                <div class="desktop-avatar">Garba_js</div>
-                <div>
-                    <span class="desktop-name">Garba Joseph</span>
-                    <span class="desktop-role">Dev & Designer</span>
-                </div>
-            </div>
-
-            <div class="nav-items">
-                <button class="nav-btn active" data-index="0" data-page="home">
-                    <div class="nav-icon"><i class="fa-solid fa-house"></i></div>
-                    <span class="nav-label">Home</span>
-                </button>
-
-                <button class="nav-btn" data-index="1" data-page="about">
-                    <div class="nav-icon"><i class="fa-solid fa-user-gear"></i></div>
-                    <span class="nav-label">About</span>
-                </button>
-
-                <button class="nav-btn" data-index="2" data-page="projects">
-                    <div class="nav-icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <span class="nav-label">Projects</span>
-                </button>
-
-                <button class="nav-btn" data-index="3" data-page="experience">
-                    <div class="nav-icon"><i class="fa-solid fa-briefcase"></i></div>
-                    <span class="nav-label">Experience</span>
-                </button>
-
-                <button class="nav-btn" data-index="4" data-page="contact">
-                    <div class="nav-icon"><i class="fa-solid fa-envelope"></i></div>
-                    <span class="nav-label">Contact</span>
-                </button>
-            </div>
-            
-            <!-- Sliding Active Indicator (WhatsApp / Facebook style) -->
-            <div class="nav-indicator" id="nav-indicator"></div>
-        </nav>
-
-        <!-- Horizontal Swipe / Slide Viewport -->
-        <main class="pages-viewport" id="pages-viewport">
-            <div class="pages-track" id="pages-track">
-                
-                <!-- PAGE 1: HOME -->
-                <section id="page-home" class="portfolio-page">
-                    <div class="home-layout">
-                        <div class="profile-hero">
-                            <div class="avatar-wrapper">
-                                <div class="avatar-glow"></div>
-                                <img src="images/headshot.jpg" alt="Garba Joseph" class="avatar-img">
-                            </div>
-
-                            <div class="hero-text">
-                                <h1 class="hero-title">
-                                    Garba Joseph Samson<i class="fa-solid fa-circle-check verified-icon"></i>
-                                </h1>
-                                <p class="hero-subtitle">Community Servant | Dev | Entrepreneur</p>
-                                <p class="hero-bio">
-                                    Building digital & visual solutions for real-world problems for SMEs & Brands. Building scalable digital solutions in Jos, Nigeria.
-                                </p>
-                            </div>
-
-                            <!-- Social Quick Buttons -->
-                            <div class="social-row">
-                                <a href="https://github.com" target="_blank" class="social-btn">
-                                    <i class="fa-brands fa-github"></i>
-                                    <span>GitHub</span>
-                                </a>
-                                <a href="https://web.facebook.com/garbajs" target="_blank" class="social-btn">
-                                    <i class="fa-brands fa-facebook"></i>
-                                    <span>Facebook</span>
-                                </a>
-                                <a href="https://www.linkedin.com/in/garba-js" target="_blank" class="social-btn">
-                                    <i class="fa-brands fa-linkedin text-blue"></i>
-                                    <span>LinkedIn</span>
-                                </a>
-
-                            </div>
-                        </div>
-
-                        <!-- Availability Call to Action Card -->
-                        <div class="cta-banner">
-                            <div class="cta-shine"></div>
-                            <span class="cta-badge">Availability</span>
-                            <h2 class="cta-title">Open for Freelance & Full-time</h2>
-                            <p class="cta-desc">Let's discuss your next breakthrough web or mobile project.</p>
-                            <button class="cta-btn" data-jump="4">
-                                Get in Touch <i class="fa-solid fa-arrow-right"></i>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- PAGE 2: ABOUT -->
-                <section id="page-about" class="portfolio-page">
-                    <div class="section-header">
-                        <h2 class="section-title"><i class="fa-solid fa-user-gear"></i> Expertise & Skills</h2>
-                    </div>
-
-                    <div class="responsive-grid">
-                        <div class="glass-card">
-                            <h3 class="card-heading"><i class="fa-solid fa-code text-brand"></i> Frontend Development</h3>
-                            <div class="chip-group">
-                                <span class="chip"><i class="fa-brands fa-html5 text-orange"></i> HTML5 / CSS3</span>
-                                <span class="chip"><i class="fa-brands fa-js text-yellow"></i> JavaScript (ES6+)</span>
-                                <span class="chip"><i class="fa-brands fa-react text-cyan"></i> React / Next.js</span>
-                                <span class="chip"><i class="fa-solid fa-wind text-teal"></i> Responsive UI</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card">
-                            <h3 class="card-heading"><i class="fa-solid fa-server text-indigo"></i> Backend & Cloud</h3>
-                            <div class="chip-group">
-                                <span class="chip"><i class="fa-solid fa-terminal text-purple"></i> C# / OOP</span>
-                                <span class="chip"><i class="fa-brands fa-node text-green"></i> Node.js</span>
-                                <span class="chip"><i class="fa-solid fa-database text-blue"></i> PostgreSQL</span>
-                                <span class="chip"><i class="fa-solid fa-fire text-amber"></i> Firebase</span>
-                            </div>
-                        </div>
-
-                        <div class="glass-card">
-                            <h3 class="card-heading"><i class="fa-solid fa-pen-nib text-purple"></i> Design & Strategy</h3>
-                            <div class="chip-group">
-                                <span class="chip"><i class="fa-brands fa-figma text-pink"></i> Figma</span>
-                                <span class="chip"><i class="fa-solid fa-wand-magic-sparkles text-purple"></i> Brand Systems</span>
-                                <span class="chip"><i class="fa-brands fa-git-alt text-orange"></i> Git Workflow</span>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- PAGE 3: PROJECTS -->
-                <section id="page-projects" class="portfolio-page">
-                    <div class="section-header">
-                        <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Featured Works</h2>
-                        <span class="section-meta">3 Projects</span>
-                    </div>
-
-                    <div class="responsive-grid projects-grid">
-                        <!-- Project 1 -->
-                        <article class="project-card">
-                            <div class="project-thumb">
-                                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=600" alt="Managira ERP">
-                                <div class="thumb-overlay"></div>
-                                <span class="project-tag tag-purple">Cloud ERP</span>
-                            </div>
-                            <div class="project-body">
-                                <h3>Managira School ERP</h3>
-                                <p>Cloud-based school management software platform streamlining administrative reporting, attendance, and student workflows.</p>
-                                <div class="tech-tags">
-                                    <span>Web App</span>
-                                    <span>Dashboard</span>
-                                    <span>UI/UX</span>
-                                </div>
-                                <button class="btn-primary open-modal-btn" 
-                                    data-title="Managira School ERP"
-                                    data-desc="A comprehensive cloud-based school management platform designed to streamline academic records, administrative reporting, and parent-teacher communication."
-                                    data-github="https://github.com"
-                                    data-demo="https://example.com">
-                                    View Details
-                                </button>
-                            </div>
-                        </article>
-
-                        <!-- Project 2 -->
-                        <article class="project-card">
-                            <div class="project-thumb">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600" alt="Anaguta Tradomodern">
-                                <div class="thumb-overlay"></div>
-                                <span class="project-tag tag-emerald">Culture & Tech</span>
-                            </div>
-                            <div class="project-body">
-                                <h3>Anaguta Tradomodern</h3>
-                                <p>Digital cultural preservation initiative featuring progressive web apps, native language audio dictionaries, and heritage storytelling.</p>
-                                <div class="tech-tags">
-                                    <span>PWA</span>
-                                    <span>Audio Archive</span>
-                                    <span>JavaScript</span>
-                                </div>
-                                <button class="btn-primary open-modal-btn"
-                                    data-title="Anaguta Tradomodern"
-                                    data-desc="An interactive cultural preservation web application housing native language audio pronunciations, historical archives, and community heritage resources."
-                                    data-github="https://github.com"
-                                    data-demo="https://example.com">
-                                    View Details
-                                </button>
-                            </div>
-                        </article>
-
-                        <!-- Project 3 -->
-                        <article class="project-card">
-                            <div class="project-thumb">
-                                <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=600" alt="Business Finance Tool">
-                                <div class="thumb-overlay"></div>
-                                <span class="project-tag tag-indigo">Fintech Tool</span>
-                            </div>
-                            <div class="project-body">
-                                <h3>SME Profit & VAT Calculator</h3>
-                                <p>Lightweight financial calculator incorporating 7.5% VAT computation, break-even analysis, and profit margin forecasting.</p>
-                                <div class="tech-tags">
-                                    <span>HTML5</span>
-                                    <span>CSS3</span>
-                                    <span>Vanilla JS</span>
-                                </div>
-                                <button class="btn-primary open-modal-btn"
-                                    data-title="SME Profit & VAT Calculator"
-                                    data-desc="A fast, zero-dependency financial modeling tool built for small businesses to compute 7.5% VAT, unit economics, break-even targets, and net margins."
-                                    data-github="https://github.com"
-                                    data-demo="https://example.com">
-                                    View Details
-                                </button>
-                            </div>
-                        </article>
-                    </div>
-                </section>
-
-                <!-- PAGE 4: EXPERIENCE -->
-                <section id="page-experience" class="portfolio-page">
-                    <div class="section-header">
-                        <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work & Education</h2>
-                    </div>
-
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <span class="timeline-dot active"></span>
-                            <span class="timeline-date active">2024 - Present</span>
-                            <h3>Co-Founder & Business Strategist</h3>
-                            <p class="timeline-org">Doxa Pâtisserie • Jos, Nigeria</p>
-                            <p class="timeline-desc">
-                                Leading brand strategy, visual design, and custom financial analytics dashboards for an artisanal bakery venture.
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <span class="timeline-dot"></span>
-                            <span class="timeline-date">2024 - Present</span>
-                            <h3>Content Manager & Frontend Developer</h3>
-                            <p class="timeline-org">Managira ERP</p>
-                            <p class="timeline-desc">
-                                Managing digital strategy, user interface improvements, and field outreach operations for school management software.
-                            </p>
-                        </div>
-
-                        <div class="timeline-item">
-                            <span class="timeline-dot"></span>
-                            <span class="timeline-date">Ongoing</span>
-                            <h3>Software Development & CS Coursework</h3>
-                            <p class="timeline-org">BYU-Pathway Worldwide</p>
-                            <p class="timeline-desc">
-                                Focusing on dynamic web development, software design principles, and object-oriented programming in C#.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- PAGE 5: CONTACT -->
-                <section id="page-contact" class="portfolio-page">
-                    <div class="section-header">
-                        <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Let's Connect</h2>
-                    </div>
-
-                    <div class="contact-layout">
-                        <div class="quick-contact-grid">
-                            <a href="mailto:garbajoseph@example.com" class="quick-card">
-                                <div class="quick-icon purple"><i class="fa-solid fa-envelope"></i></div>
-                                <span class="quick-title">Email Me</span>
-                                <span class="quick-sub">Direct Inquiries</span>
-                            </a>
-
-                            <a href="https://wa.me/2348000000000" target="_blank" class="quick-card">
-                                <div class="quick-icon emerald"><i class="fa-brands fa-whatsapp"></i></div>
-                                <span class="quick-title">WhatsApp</span>
-                                <span class="quick-sub">Quick Chat</span>
-                            </a>
-                        </div>
-
-                        <div class="glass-card form-card">
-                            <h3 class="form-heading">Send a Message</h3>
-                            <form id="contact-form" class="contact-form">
-                                <div class="form-group">
-                                    <label for="form-name">Your Name</label>
-                                    <input type="text" id="form-name" required placeholder="Jane Doe">
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-email">Your Email</label>
-                                    <input type="email" id="form-email" required placeholder="jane@company.com">
-                                </div>
-                                <div class="form-group">
-                                    <label for="form-msg">Message</label>
-                                    <textarea id="form-msg" rows="3" required placeholder="Tell me about your project..."></textarea>
-                                </div>
-                                <button type="submit" class="btn-gradient">
-                                    Send Message <i class="fa-solid fa-paper-plane"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </section>
-
-            </div>
-        </main>
-
-        <!-- Home Bar Indicator -->
-        <div class="home-indicator" aria-hidden="true"></div>
-    </div>
-
-    <!-- Project Details Modal -->
-    <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
-        <div class="modal-box" id="modal-content">
-            <button id="close-modal-btn" class="modal-close" aria-label="Close modal">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <span class="modal-badge">Project Overview</span>
-            <h3 id="modal-title" class="modal-title">Project Title</h3>
-            <p id="modal-desc" class="modal-desc">Detailed project description goes here...</p>
-            <div class="modal-actions">
-                <a id="modal-demo" href="#" target="_blank" class="btn-primary flex-1">
-                    Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
-                <a id="modal-code" href="#" target="_blank" class="btn-icon" aria-label="GitHub Repository">
-                    <i class="fa-brands fa-github"></i>
-                </a>
-            </div>
+        <div class="social-row">
+          <a href="https://github.com" target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-github"></i><span>GitHub</span></a>
+          <a href="https://web.facebook.com/garbajs" target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-facebook"></i><span>Facebook</span></a>
+          <a href="https://www.linkedin.com/in/garba-js" target="_blank" rel="noopener" class="social-btn"><i class="fa-brands fa-linkedin text-blue"></i><span>LinkedIn</span></a>
         </div>
-    </div>
+      </div>
+      <div class="cta-banner"><div class="cta-shine"></div><span class="cta-badge">Availability</span>
+        <h2 class="cta-title">Open for Freelance & Full-time</h2>
+        <p class="cta-desc">Let's discuss your next breakthrough web or mobile project.</p>
+        <button class="cta-btn" data-jump="4">Get in Touch <i class="fa-solid fa-arrow-right"></i></button></div>
+    </div></section>
 
-    <!-- Toast Notification -->
-    <div id="toast" class="toast-banner" role="status">
-        <i class="fa-solid fa-circle-check"></i>
-        <span id="toast-text">Message sent successfully!</span>
-    </div>
+    <section id="page-about" class="portfolio-page">
+      <div class="section-header"><h2 class="section-title"><i class="fa-solid fa-user-gear"></i> About</h2></div>
+      <div class="seg" role="tablist" data-seg>
+        <button role="tab" aria-selected="true" data-tab="pro">Professional</button>
+        <button role="tab" aria-selected="false" data-tab="personal">Personal</button>
+      </div>
+      <div class="tabpanel" data-panel="pro"><div class="responsive-grid" id="about-pro"></div></div>
+      <div class="tabpanel" data-panel="personal" hidden id="about-personal"></div>
+    </section>
 
-    <script src="scripts/script.js"></script>
+    <section id="page-projects" class="portfolio-page">
+      <div class="section-header"><h2 class="section-title"><i class="fa-solid fa-layer-group"></i> Projects</h2><span class="section-meta" id="proj-meta"></span></div>
+      <div class="seg" role="tablist" data-seg>
+        <button role="tab" aria-selected="true" data-tab="featured">Featured Works</button>
+        <button role="tab" aria-selected="false" data-tab="recent">Recent Activity</button>
+      </div>
+      <div class="tabpanel" data-panel="featured"><div class="responsive-grid projects-grid" id="projects-grid"></div></div>
+      <div class="tabpanel" data-panel="recent" hidden><div class="feed" id="activity-feed"></div></div>
+    </section>
+
+    <section id="page-experience" class="portfolio-page">
+      <div class="section-header"><h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work & Education</h2></div>
+      <div class="timeline">
+        <div class="timeline-item"><span class="timeline-dot active"></span><span class="timeline-date active">2024 - Present</span>
+          <h3>Co-Founder & Business Strategist</h3><p class="timeline-org">Doxa Pâtisserie • Jos, Nigeria</p>
+          <p class="timeline-desc">Leading brand strategy, visual design, and custom financial analytics dashboards for an artisanal bakery venture.</p></div>
+        <div class="timeline-item"><span class="timeline-dot"></span><span class="timeline-date">2024 - Present</span>
+          <h3>Content Manager & Frontend Developer</h3><p class="timeline-org">Managira ERP</p>
+          <p class="timeline-desc">Managing digital strategy, user interface improvements, and field outreach operations for school management software.</p></div>
+        <div class="timeline-item"><span class="timeline-dot"></span><span class="timeline-date">Ongoing</span>
+          <h3>Software Development & CS Coursework</h3><p class="timeline-org">BYU-Pathway Worldwide</p>
+          <p class="timeline-desc">Focusing on dynamic web development, software design principles, and object-oriented programming in C#.</p></div>
+      </div>
+    </section>
+
+    <section id="page-contact" class="portfolio-page">
+      <div class="section-header"><h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Let's Connect</h2></div>
+      <div class="contact-layout">
+        <div class="quick-contact-grid">
+          <a id="c-mail" href="#" class="quick-card"><div class="quick-icon purple"><i class="fa-solid fa-envelope"></i></div><span class="quick-title">Email Me</span><span class="quick-sub">Direct Inquiries</span></a>
+          <a id="c-wa" href="#" target="_blank" rel="noopener" class="quick-card"><div class="quick-icon emerald"><i class="fa-brands fa-whatsapp"></i></div><span class="quick-title">WhatsApp</span><span class="quick-sub">Quick Chat</span></a>
+        </div>
+        <div class="glass-card form-card"><h3 class="form-heading">Send a Message</h3>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group"><label for="form-name">Your Name</label><input type="text" id="form-name" required placeholder="Jane Doe"></div>
+            <div class="form-group"><label for="form-email">Your Email</label><input type="email" id="form-email" required placeholder="jane@company.com"></div>
+            <div class="form-group"><label for="form-msg">Message</label><textarea id="form-msg" rows="3" required placeholder="Tell me about your project..."></textarea></div>
+            <button type="submit" class="btn-gradient">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+          </form></div>
+      </div>
+    </section>
+   </div>
+  </main>
+  </div>
+</div>
+
+<div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+  <div class="modal-box" id="modal-content">
+    <button id="close-modal-btn" class="modal-close" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <span class="modal-badge">Project Overview</span>
+    <h3 id="modal-title" class="modal-title"></h3><p id="modal-desc" class="modal-desc"></p>
+    <div class="modal-actions">
+      <a id="modal-demo" href="#" target="_blank" rel="noopener" class="btn-primary flex-1">Live Preview <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+      <a id="modal-code" href="#" target="_blank" rel="noopener" class="btn-icon" aria-label="GitHub repository"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
+</div>
+<div id="toast" class="toast-banner" role="status"><i class="fa-solid fa-circle-check"></i><span id="toast-text"></span></div>
+<script src="data/content.js"></script>
+<script src="scripts/script.js" defer></script>
 </body>
 </html>
