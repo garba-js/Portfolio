@@ -35,7 +35,7 @@ window.CONTENT = {
       desc: 'Digital cultural preservation: progressive web app with native-language audio dictionary and heritage stories.',
       cover: 'images/an.jpeg', 
       featured: false, 
-      stack: ['PWA', 'Audio Archive', 'JavaScript'],
+      stack: ['PWA', 'Audio Archive', 'JavaScript', 'HTML', 'CSS'],
       id: 'anaguta-tradomodern', 
       shareFile: true, 
       role: 'Developer', 
@@ -43,7 +43,6 @@ window.CONTENT = {
       status: '70%',
       highlights: ['Native-language audio dictionary', 'Heritage stories and archives', 'Progressive web app'], 
             "body": [ ],
-      github: 'https://github.com', 
       demo: 'https://garba-js.github.io/anaguta/index.html' },
 
   /*CDN */
@@ -55,13 +54,18 @@ window.CONTENT = {
       cover: '', 
       featured: false, 
       stack: ['HTML5', 'CSS3', 'Vanilla JS'],
-      id: 'sme-profit-vat-calculator', shareFile: false, role: '', year: '', status: '',
+      id: 'sme-profit-vat-calculator', 
+      shareFile: false, 
+      role: '', 
+      year: '', 
+      status: '',
       highlights: ['7.5% VAT computation', 'Break-even analysis', 'Profit-margin forecasting'],
       body: [
         'Dummy text. Say why small businesses need this tool and what question it answers in seconds.',
         'Dummy text. Mention how it works, why it has no dependencies, and where people can use it.'
       ], 
-      github: 'https://github.com', demo: 'https://example.com' }
+      github: 'https://github.com', 
+      demo: 'https://example.com' }
   ],
   activity: [
     {
