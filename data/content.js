@@ -116,9 +116,21 @@ window.CONTENT = {
   ],
   about: {
     professional: [
-      { icon: 'fa-code', title: 'Frontend Development', items: ['HTML5 / CSS3', 'JavaScript (ES6+)', 'React / Next.js', 'Responsive UI'] },
-      { icon: 'fa-server', title: 'Backend & Cloud', items: ['C# / OOP', 'Node.js', 'PostgreSQL', 'Firebase'] },
-      { icon: 'fa-pen-nib', title: 'Design & Strategy', items: ['Figma', 'Brand Systems', 'Git Workflow'] }
+      { 
+        icon: 'fa-code', 
+        title: 'Frontend Development', 
+        items: ['HTML5 / CSS', 'JavaScript','Responsive UI'] 
+      },
+      { 
+        icon: 'fa-server', 
+        title: 'Backend', 
+        items: ['C# (Programming with Classes) '] 
+      },
+      { 
+        icon: 'fa-pen-nib', 
+        title: 'Design & Strategy', 
+        items: ['Figma', 'Brand Systems', 'Git Workflow'] 
+      }
     ],
     personal: {
       story: 'Write your personal story here: where you grew up, what drives you, and why you serve your community.',
