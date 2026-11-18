@@ -33,7 +33,7 @@ window.CONTENT = {
       icon: 'fa-landmark', 
       accent: 'gold',
       desc: 'Digital cultural preservation: progressive web app with native-language audio dictionary and heritage stories.',
-      cover: 'images/an.jpeg', 
+      cover: 'images/project-anaguta-tradomodern.jpg', 
       featured: false, 
       stack: ['PWA', 'Audio Archive', 'JavaScript', 'HTML', 'CSS'],
       id: 'anaguta-tradomodern', 
