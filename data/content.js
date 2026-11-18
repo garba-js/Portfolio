@@ -9,6 +9,9 @@
 window.CONTENT = {
   site: { email: 'garbajoseph@example.com', whatsapp: '2348000000000' },
   projects: [
+
+      /*Managira */
+
     { title: 'Managira School ERP', 
       tag: 'Cloud ERP', 
       icon: 'fa-school', 
@@ -17,14 +20,16 @@ window.CONTENT = {
       cover: '', 
       featured: false, 
       stack: ['Web App', 'Dashboard', 'UI/UX'],
-      id: 'managira-school-erp', shareFile: false, role: '', year: '', status: '',
+      id: 'managira-school-erp', 
+      shareFile: false, 
+      role: 'Content Manager', 
+      year: '2026 ', 
+      status: 'Present',
       highlights: ['Administrative reporting', 'Attendance tracking', 'Student workflows'],
       body: [
-        'Dummy text. Explain the problem this project solves and who it is for: for example, schools that still keep records on paper.',
-        'Dummy text. Describe what you built or contributed, what makes it different, and any results (schools onboarded, hours saved, feedback received).'
+        'Leading content creation and field operations as Content Manager. Optimized digital storytelling to scale brand presence among educational institutions, bridging software utility with administrative ease.'
       ], 
-      github: 'https://github.com', 
-      demo: 'https://example.com' },
+      demo: 'https://managira.com' },
 
 
   /*Anaguta Tradomodern */
@@ -42,7 +47,29 @@ window.CONTENT = {
       year: '2025 - Present', 
       status: '70%',
       highlights: ['Native-language audio dictionary', 'Heritage stories and archives', 'Progressive web app'], 
-            "body": [ ],
+            "body": [
+              'Serving as Team Lead, spearheading the design and development of a digital cultural archive. The Progressive Web Application features phonetic audio guides for native terminology, historical timelines, and accessible community folklore archives.'
+             ],
+      demo: 'https://garba-js.github.io/anaguta/index.html' },
+
+  /*Doxa Patisserie */
+    { title: 'Doxa Patisserie', 
+      tag: 'Modern Bakery', 
+      icon: 'fa-landmark', 
+      accent: 'gold',
+      desc: 'A fresh-baked-on-demand artisan bakery operating in Jos.',
+      cover: 'images/ban.jpg', 
+      featured: false, 
+      stack: ['', ],
+      id: 'Doxa-patisserie', 
+      shareFile: true, 
+      role: 'Director', 
+      year: '2024', 
+      status: 'Present',
+      highlights: ['Operations', 'Financial Modeling', 'Diector'], 
+            "body": [
+              'Co-founded and managed Doxa Pâtisserie in Jos, ensuring premium quality pastries baked strictly on demand. Built automated Google Sheet financial dashboards tracking daily ingredient costs, order fulfillment timelines, and net revenue margins.'
+             ],
       demo: 'https://garba-js.github.io/anaguta/index.html' },
 
   /*CDN */
