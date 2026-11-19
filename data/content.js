@@ -142,6 +142,13 @@ window.CONTENT = {
     }
   ],
   about: {
+    summary : [
+      "I’m a developer, designer and business strategist based in Jos, Nigeria, building digital and visual solutions for small businesses and brands.",
+      "I co-founded Doxa Pâtisserie, where I lead brand strategy, design and financial analytics, and I work as a content manager and frontend developer at Managira, a cloud school management platform.",
+      "I’m studying software development through BYU-Pathway Worldwide, with a focus on dynamic web development, software design principles and object-oriented programming in C#. I’m open to freelance and full-time opportunities.",
+    ],
+
+
     professional: [
       { 
         icon: 'fa-code', 
@@ -160,7 +167,7 @@ window.CONTENT = {
       }
     ],
     personal: {
-      story: 'Write your personal story here: where you grew up, what drives you, and why you serve your community.',
+      story: 'I’m Garba Joseph Samson, a developer, designer and community servant based in Jos, Nigeria. I build digital and visual solutions for small businesses and brands, and I care most about work that solves a real problem for real people. I co-founded Doxa Pâtisserie, an artisanal bakery venture, where I lead brand strategy, design and financial analytics. I also work as a content manager and frontend developer at Managira, a cloud school management platform, and I’m studying software development through BYU-Pathway Worldwide. Beyond client work, I’m passionate about preserving heritage. Through Anaguta Tradomodern, my team and I document the history, language and stories of the Anaguta people of Jos North so they can be shared with the world.',
       interests: ['Community service', 'Building software', 'Brand & visual design', 'Baking (Doxa Pâtisserie)'],
       values: ['Service', 'Integrity', 'Continuous learning']
     }
