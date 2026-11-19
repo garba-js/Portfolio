@@ -1428,3 +1428,11 @@ a.post:hover .post-img img,.post.has-img:hover .post-img img{transform:scale(1.0
 .r-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
 .r-link.ghost{background:transparent;color:var(--t-ink);border:1px solid var(--hair)}
 .r-link.ghost:hover{background:rgba(255,255,255,.06)}
+
+/* ===== mobile: fill the visible screen (no gap above or below) ===== */
+body{min-height:100vh;min-height:100dvh}
+.topbar{padding-top:calc(10px + env(safe-area-inset-top,0px))}
+@media(max-width:639px){
+  body{display:block;min-height:0;height:100vh;height:100dvh}
+  .app-shell{height:100%;border:0;border-radius:0;box-shadow:none}
+}
